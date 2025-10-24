@@ -31,7 +31,7 @@ const Login = () => {
       toast.success('Logged in successfully!')
 
       // Redirect to dashboard
-      navigate('/dashboard')
+     window.location.href = '/dashboard'
     } catch (error) {
       console.error('Login error:', error)
       toast.error(error.response?.data?.message || 'Invalid email or password')
