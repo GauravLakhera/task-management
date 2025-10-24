@@ -30,7 +30,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6  md:w-10/12 mx-auto">
       <div className="flex justify-between mb-6">
         <h1 className="text-3xl font-bold">Dashboard</h1>
         <Button onClick={() => setModalOpen(true)}>+ Create New Project</Button>
@@ -44,7 +44,7 @@ const Dashboard = () => {
             <div
               key={p._id}
               onClick={() => handleProjectClick(p.projectId)}
-              className="p-4 border rounded hover:shadow-md cursor-pointer transition"
+              className="p-4 border border-black/30 rounded hover:shadow-md cursor-pointer transition"
             >
               <h3 className="font-bold text-lg">{p.name}</h3>
               <p className="text-sm text-gray-600 line-clamp-2">{p.description}</p>
