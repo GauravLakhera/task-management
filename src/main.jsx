@@ -10,6 +10,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
 import "./index.css";
 import { Toaster } from "react-hot-toast";
+import ProjectDetails from "./pages/ProjectDetails";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,10 @@ const router = createBrowserRouter([
       },
       {
         element: <ProtectedRoute />,
-        children: [{ path: "/dashboard", element: <Dashboard /> }],
+        children: [
+          { path: "/dashboard", element: <Dashboard /> },
+          { path: "/project/:projectId", element: <ProjectDetails /> },
+        ],
       },
     ],
   },

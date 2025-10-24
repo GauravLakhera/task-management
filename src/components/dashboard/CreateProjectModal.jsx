@@ -28,7 +28,7 @@ const CreateProjectModal = ({ isOpen, onClose, onCreated }) => {
     setLoading(true)
 
     try {
-      await api.post('/projects', formData)
+      await api.post('/project', formData)
       onCreated() // callback to refresh project list
       onClose()
     } catch (error) {
