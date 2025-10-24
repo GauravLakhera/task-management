@@ -1,7 +1,6 @@
 import api from '@/services/api';
 import apiKeys from '@/services/apiKeys';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 export const getProjectList = createAsyncThunk(
   'data/bookingDetails',
