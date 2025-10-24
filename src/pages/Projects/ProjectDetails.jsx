@@ -104,7 +104,11 @@ const ProjectDetails = () => {
         {/* Action Buttons */}
         <div className='flex gap-3'>
           <Button onClick={() => setTaskModalOpen(true)}>Create Task</Button>
-          <Button onClick={() => setAddMemberOpen(true)} variant='secondary'>
+          <Button
+            className={`cursor-pointer`}
+            onClick={() => setAddMemberOpen(true)}
+            variant='secondary'
+          >
             Add Member
           </Button>
         </div>
