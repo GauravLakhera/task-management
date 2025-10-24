@@ -13,10 +13,12 @@ import {
   CardTitle,
 } from '../components/ui/card'
 import toast from 'react-hot-toast'
+import { Eye, EyeOff } from 'lucide-react'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -25,13 +27,9 @@ const Login = () => {
     setIsLoading(true)
 
     try {
-      // With cookies enabled via api.js `withCredentials: true`
       await api.post('/auth/login', { email, password })
-      
       toast.success('Logged in successfully!')
-
-      // Redirect to dashboard
-     window.location.href = '/dashboard'
+      window.location.href = '/dashboard'
     } catch (error) {
       console.error('Login error:', error)
       toast.error(error.response?.data?.message || 'Invalid email or password')
@@ -65,17 +63,23 @@ const Login = () => {
                 disabled={isLoading}
               />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 relative">
               <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 disabled={isLoading}
               />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </span>
             </div>
             <div className="flex items-center justify-between">
               <Link
