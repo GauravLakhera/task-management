@@ -17,6 +17,7 @@ const CreateTaskModal = ({ isOpen, onClose, projectId }) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
+    type:"task",
     priority: 'medium',
   })
   const [loading, setLoading] = useState(false)
@@ -43,13 +44,13 @@ const CreateTaskModal = ({ isOpen, onClose, projectId }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Create New Task</DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+        <form onSubmit={handleSubmit} className="space-y-4 mt-2">
+          <div className="space-y-2">
             <Label htmlFor="title">Title</Label>
             <Input
               id="title"
@@ -61,7 +62,7 @@ const CreateTaskModal = ({ isOpen, onClose, projectId }) => {
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
@@ -72,14 +73,14 @@ const CreateTaskModal = ({ isOpen, onClose, projectId }) => {
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label htmlFor="priority">Priority</Label>
             <select
               id="priority"
               name="priority"
               value={formData.priority}
               onChange={handleChange}
-              className="w-full border border-input bg-background rounded-md px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -87,8 +88,8 @@ const CreateTaskModal = ({ isOpen, onClose, projectId }) => {
             </select>
           </div>
 
-          <DialogFooter>
-            <Button variant="outline" onClick={onClose} disabled={loading}>
+          <DialogFooter className="mt-4">
+            <Button variant="outline" type="button" onClick={onClose} disabled={loading}>
               Cancel
             </Button>
             <Button type="submit" disabled={loading}>
