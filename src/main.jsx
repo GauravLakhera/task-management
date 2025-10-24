@@ -13,7 +13,7 @@ import "./index.css";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       { path: "/", element: <Login /> },
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Toaster position="top-right" reverseOrder={false} />
     <RouterProvider router={router} />

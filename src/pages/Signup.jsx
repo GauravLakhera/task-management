@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import api from '../services/api'
-import { Button } from '../components/ui/button'
-import { Input } from '../components/ui/input'
-import { Label } from "../components/ui/label"
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../services/api";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
 import {
   Card,
   CardContent,
@@ -11,57 +11,57 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '../components/ui/card'
-import toast from 'react-hot-toast'
+} from "../components/ui/card";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    userName: '',
-    password: '',
-    confirmPassword: '',
-  })
-  const [isLoading, setIsLoading] = useState(false)
-  const navigate = useNavigate()
+    firstName: "",
+    lastName: "",
+    email: "",
+    userName: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // Validate passwords
     if (formData.password !== formData.confirmPassword) {
-      toast.error('Passwords do not match')
-      return
+      toast.error("Passwords do not match");
+      return;
     }
 
     if (formData.password.length < 8) {
-      toast.error('Password must be at least 8 characters')
-      return
+      toast.error("Password must be at least 8 characters");
+      return;
     }
 
-    setIsLoading(true)
+    setIsLoading(true);
 
     try {
-      const { confirmPassword, ...signupData } = formData
-      await api.post('/user', signupData)
-      toast.success('Account created successfully!')
+      const { confirmPassword, ...signupData } = formData;
+      await api.post("/user", signupData);
+      toast.success("Account created successfully!");
       // Cookie automatically stored by backend
-      navigate('/dashboard')
+      navigate("/dashboard");
     } catch (error) {
-      console.error('Signup error:', error)
-      toast.error(error.response?.data?.message || 'Unable to create account')
+      console.error("Signup error:", error);
+      toast.error(error.response?.data?.message || "Unable to create account");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
@@ -161,12 +161,12 @@ const Signup = () => {
             </div>
           </CardContent>
 
-          <CardFooter className="flex flex-col space-y-4">
+          <CardFooter className="flex flex-col space-y-4 mt-5">
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? 'Creating account...' : 'Create Account'}
+              {isLoading ? "Creating account..." : "Create Account"}
             </Button>
             <p className="text-sm text-center text-muted-foreground">
-              Already have an account?{' '}
+              Already have an account?{" "}
               <Link to="/" className="text-primary hover:underline">
                 Sign in
               </Link>
@@ -175,7 +175,7 @@ const Signup = () => {
         </form>
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
