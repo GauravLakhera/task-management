@@ -5,11 +5,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
 import ProjectDetails from './pages/Projects/ProjectDetails';
 
 import { Toaster } from 'react-hot-toast';
 import './index.css';
+import ReduxProvider from './store/redux/reduxProvider';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Toaster position='top-right' reverseOrder={false} />
-    <RouterProvider router={router} />
+    <ReduxProvider>
+      <Toaster position='top-right' reverseOrder={false} />
+      <RouterProvider router={router} />
+    </ReduxProvider>
   </React.StrictMode>
 );
