@@ -11,6 +11,7 @@ import ProjectDetails from './pages/Projects/ProjectDetails';
 import { Toaster } from 'react-hot-toast';
 import './index.css';
 import ReduxProvider from './store/redux/reduxProvider';
+import Task from './pages/Task/Task';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,8 @@ const router = createBrowserRouter([
       { path: '/login', element: <Login /> },
       { path: '/signup', element: <Signup /> },
       { path: '/dashboard', element: <Dashboard /> },
-      { path: '/project/:projectId', element: <ProjectDetails /> }
+      { path: '/project/:projectId', element: <ProjectDetails /> },
+        { path: '/task', element: <Task /> }
     ]
   }
 ]);

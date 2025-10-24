@@ -6,7 +6,9 @@ const apiKeys = {
   addMember: '/member',
 
   // users
-  getUser: '/user'
+  getUser: '/user',
+  // issues
+  issueList: '/issue'
 };
 
 export default apiKeys;

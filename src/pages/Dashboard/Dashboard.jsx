@@ -29,6 +29,7 @@ const Dashboard = () => {
   }, []);
 
   const handleProjectClick = (id) => {
+    localStorage.setItem('project', id);
     navigate(`/project/${id}`);
   };
 
